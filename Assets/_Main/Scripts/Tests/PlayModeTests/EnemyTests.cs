@@ -10,22 +10,33 @@ public class EnemyTests
     [TestFixture]
     public class Spawn
     {
-        //TODO test once the SpawnManager is on
-        //[UnityTest]
-        //public IEnumerator IsSpawned()
-        //{
-        //    //Arrange
-        //    SceneManager.LoadScene("PlayerAndOneEnemySpawnerTestScene");
-        //    yield return new WaitWhile(() => SceneManager.GetActiveScene().buildIndex != 2);
-        //    EnemySpawner enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        [UnityTest]
+        public IEnumerator IsAtLeastOneSpawned()
+        {
+            //Arrange
+            SceneManager.LoadScene("OneEnemySpawnerTestScene");
+            yield return new WaitWhile(() => SceneManager.GetActiveScene().buildIndex != 2);
 
-        //    //Act
-        //    yield return new WaitForSeconds(2f);
+            //Act
+            yield return new WaitForSeconds(2f);
 
+            //Assert
+            Assert.IsTrue(GameManager.EnemyTotalAmount >= 1);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(1, GameManager.EnemyTotalAmount);
-        //}
+        [UnityTest]
+        public IEnumerator IsAtLeastThreeSpawned()
+        {
+            //Arrange
+            SceneManager.LoadScene("EnemySpawnerManagerTestScene");
+            yield return new WaitWhile(() => SceneManager.GetActiveScene().buildIndex != 3);
+
+            //Act
+            yield return new WaitForSeconds(5f);
+
+            //Assert
+            Assert.IsTrue(GameManager.EnemyTotalAmount >= 3);
+        }
     }
 
     [TestFixture]

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class GameManager
 {
     public static int EnemyTotalAmount { get; set; }
@@ -11,5 +13,10 @@ public static class GameManager
         player = _player;
 
         EnemyTotalAmount = 0;
+    }
+
+    public static void TestInit()
+    {
+        player = new GameObject().AddComponent<Player>();
     }
 }

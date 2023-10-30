@@ -15,16 +15,15 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        //TODO goes inside a SpawnManager
-        //spawnTimer -= Time.deltaTime;
-        //if (spawnTimer <= 0f)
-        //{
-        //    SpawnEnemy();
-        //    Destroy(gameObject);
-        //}
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0f)
+        {
+            SpawnEnemy();
+            Destroy(gameObject);
+        }
     }
 
-    public void SpawnEnemy()
+    private void SpawnEnemy()
     {
         EnemyTypeSO enemyType = enemyTypeArray[Random.Range(0, enemyTypeArray.Length)];
         Transform enemyTransform = Instantiate(enemyType.EnemyPrefab, transform.position, Quaternion.identity);
