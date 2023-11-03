@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3868713454164598510}
   - component: {fileID: 8713895635253126712}
   - component: {fileID: 5583189912826361521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pfEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec76ce93af770748a3d147e3f4d5ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &5583189912826361521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 2674182613239107098, guid: ba3cec59dcccd774cbcca926202cdae7, type: 3}
       propertyPath: m_Name
       value: pfEnemyVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674182613239107098, guid: ba3cec59dcccd774cbcca926202cdae7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

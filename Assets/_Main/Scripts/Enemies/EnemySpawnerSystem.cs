@@ -42,5 +42,7 @@ public class EnemySpawnerSystem : MonoBehaviour
             Transform enemySpawnerTransform = Instantiate(enemySpawnerPrefab, spawnerPosition, Quaternion.identity);
             EnemySpawner enemySpawner = enemySpawnerTransform.GetComponent<EnemySpawner>();
         }
+
+        numberOfSpawner = Random.Range(1, numberOfSpawnerMax);
     }
 }

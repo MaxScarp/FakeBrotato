@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +7,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private Transform playerPrefab;
+    [SerializeField] private Transform[] weaponPositionArray;
+    [SerializeField] private WeaponTypeSO weaponType;
+
+    private Dictionary<Transform, WeaponTypeSO> positionWeaponTypeDictionary;
 
     private void Awake()
     {
@@ -15,6 +20,18 @@ public class Player : MonoBehaviour
         {
             PlayerInput = new PlayerInput();
         }
+
+        positionWeaponTypeDictionary = new Dictionary<Transform, WeaponTypeSO>();
+        foreach (Transform weaponPosition in weaponPositionArray)
+        {
+            positionWeaponTypeDictionary.Add(weaponPosition, null);
+        }
+    }
+
+    private void Start()
+    {
+        Instantiate(weaponType.WeaponPrefab, weaponPositionArray[0].position, Quaternion.identity, weaponPositionArray[0]);
+        positionWeaponTypeDictionary[weaponPositionArray[0]] = weaponType;
     }
 
     private void Update()
