@@ -30,8 +30,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(weaponType.WeaponPrefab, weaponPositionArray[0].position, Quaternion.identity, weaponPositionArray[0]);
-        positionWeaponTypeDictionary[weaponPositionArray[0]] = weaponType;
+        for (int i = 0; i < positionWeaponTypeDictionary.Count; i++)
+        {
+            Instantiate(weaponType.WeaponPrefab, weaponPositionArray[i].position, Quaternion.identity, weaponPositionArray[i]);
+            positionWeaponTypeDictionary[weaponPositionArray[i]] = weaponType;
+        }
     }
 
     private void Update()

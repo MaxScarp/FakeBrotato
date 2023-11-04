@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimerMax;
     private float spawnTimer;
+    private bool enemySpawned;
 
     private void Awake()
     {
@@ -15,9 +16,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (enemySpawned) return;
+
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
+            enemySpawned = true;
             SpawnEnemy();
             Destroy(gameObject);
         }
@@ -26,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         EnemyTypeSO enemyType = enemyTypeArray[Random.Range(0, enemyTypeArray.Length)];
-        Transform enemyTransform = Instantiate(enemyType.EnemyPrefab, transform.position, Quaternion.identity);
+        Instantiate(enemyType.EnemyPrefab, transform.position, Quaternion.identity, transform.parent);
 
         GameManager.EnemyTotalAmount++;
     }

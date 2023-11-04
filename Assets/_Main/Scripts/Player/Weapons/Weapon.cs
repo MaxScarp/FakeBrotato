@@ -19,14 +19,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float deltaRotationDegrees = 10f;
 
     private WeaponTypeSO weaponType;
-    private Player player;
     private Transform target;
     private State state;
 
     private void Awake()
     {
         weaponType = GetComponent<WeaponTypeHolder>().WeaponType;
-        player = GameManager.GetPlayer();
         state = State.SEARCHING_FOR_ENEMIES;
     }
 
@@ -103,7 +101,7 @@ public class Weapon : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (Quaternion.Angle(transform.rotation, targetRotation) <= deltaRotationDegrees && Vector2.Distance(player.transform.position, target.position) <= attackRange)
+        if (Quaternion.Angle(transform.rotation, targetRotation) <= deltaRotationDegrees && Vector2.Distance(transform.position, target.position) <= attackRange)
         {
             ChangeState(State.ATTACKING_TO_ENEMY);
             return;
@@ -114,7 +112,7 @@ public class Weapon : MonoBehaviour
 
     private void SearchForEnemies()
     {
-        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(player.transform.position, sightRange, enemyLayerMask);
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, sightRange, enemyLayerMask);
         if (collider2DArray.Length > 0)
         {
             target = FindNearestTarget(collider2DArray);

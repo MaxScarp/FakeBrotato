@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemySpawnerSystem : MonoBehaviour
 {
     [SerializeField] private Transform enemySpawnerPrefab;
+    [SerializeField] private Transform enemyContainer;
 
     private float spawnTimerMax;
     private float spawnTimer;
@@ -39,8 +40,8 @@ public class EnemySpawnerSystem : MonoBehaviour
         {
             spawnerPosition = new Vector3(Random.Range(-18f, 18f), Random.Range(-11f, 11f));
 
-            Transform enemySpawnerTransform = Instantiate(enemySpawnerPrefab, spawnerPosition, Quaternion.identity);
-            EnemySpawner enemySpawner = enemySpawnerTransform.GetComponent<EnemySpawner>();
+            Transform enemySpawnerTransform = Instantiate(enemySpawnerPrefab, spawnerPosition, Quaternion.identity, enemyContainer);
+            enemySpawnerTransform.GetComponent<EnemySpawner>();
         }
 
         numberOfSpawner = Random.Range(1, numberOfSpawnerMax);
