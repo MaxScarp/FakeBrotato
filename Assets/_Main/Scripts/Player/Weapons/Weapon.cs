@@ -1,8 +1,14 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public enum WeaponType
 {
-    private enum State
+    MELEE,
+    RANGED
+}
+
+public abstract class Weapon : MonoBehaviour
+{
+    protected enum State
     {
         SEARCHING_FOR_ENEMIES,
         ROTATE_TO_ENEMY,
@@ -10,86 +16,24 @@ public class Weapon : MonoBehaviour
         ATTACKING_TO_HOME,
     }
 
-    [SerializeField] private LayerMask enemyLayerMask;
-    [SerializeField] private float rotationSpeed = 30f;
-    [SerializeField] private float movementSpeed = 15f;
-    [SerializeField] private float sightRange = 6f;
-    [SerializeField] private float attackRange = 4.5f;
-    [SerializeField] private float deltaMovement = 0.05f;
-    [SerializeField] private float deltaRotationDegrees = 10f;
+    [SerializeField] protected Transform visualPrefab;
 
-    private WeaponTypeSO weaponType;
-    private Transform target;
-    private State state;
+    protected WeaponTypeSO weaponType;
+    protected Transform target;
+    protected State state;
 
     private void Awake()
     {
         weaponType = GetComponent<WeaponTypeHolder>().WeaponType;
+        visualPrefab.GetComponent<SpriteRenderer>().sprite = weaponType.Sprite;
         state = State.SEARCHING_FOR_ENEMIES;
     }
 
-    private void Update()
-    {
-        switch (state)
-        {
-            case State.SEARCHING_FOR_ENEMIES:
-                SearchForEnemies();
-                break;
-            case State.ROTATE_TO_ENEMY:
-                SearchForEnemies();
-                RotateToEnemy();
-                break;
-            case State.ATTACKING_TO_ENEMY:
-                AttackEnemy();
-                break;
-            case State.ATTACKING_TO_HOME:
-                GoHome();
-                break;
-        }
-    }
+    protected abstract void ChangeState(State newState);
 
-    private void ChangeState(State newState)
-    {
-        switch (newState)
-        {
-            case State.SEARCHING_FOR_ENEMIES:
-                break;
-            case State.ROTATE_TO_ENEMY:
-                break;
-            case State.ATTACKING_TO_ENEMY:
-                break;
-            case State.ATTACKING_TO_HOME:
-                break;
-        }
+    protected abstract void AttackEnemy();
 
-        state = newState;
-    }
-
-    private void AttackEnemy()
-    {
-        if (target == null || HasArrived(transform.position, target.position))
-        {
-            ChangeState(State.ATTACKING_TO_HOME);
-            return;
-        }
-
-        transform.position = Vector2.MoveTowards(transform.position, target.position, Time.deltaTime * movementSpeed);
-    }
-
-    private void GoHome()
-    {
-        if (HasArrived(transform.position, transform.parent.position))
-        {
-            ChangeState(State.SEARCHING_FOR_ENEMIES);
-            return;
-        }
-
-        transform.position = Vector2.MoveTowards(transform.position, transform.parent.position, Time.deltaTime * movementSpeed);
-    }
-
-    private bool HasArrived(Vector2 actual, Vector2 expected) => Vector2.Distance(actual, expected) <= deltaMovement;
-
-    private void RotateToEnemy()
+    protected virtual void RotateToEnemy()
     {
         if (target == null)
         {
@@ -101,18 +45,18 @@ public class Weapon : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (Quaternion.Angle(transform.rotation, targetRotation) <= deltaRotationDegrees && Vector2.Distance(transform.position, target.position) <= attackRange)
+        if (Quaternion.Angle(transform.rotation, targetRotation) <= weaponType.DeltaRotationDegrees && Vector2.Distance(transform.position, target.position) <= weaponType.AttackRange)
         {
             ChangeState(State.ATTACKING_TO_ENEMY);
             return;
         }
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * weaponType.RotationSpeed);
     }
 
-    private void SearchForEnemies()
+    protected virtual void SearchForEnemies()
     {
-        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, sightRange, enemyLayerMask);
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, weaponType.SightRange, weaponType.EnemyLayerMask);
         if (collider2DArray.Length > 0)
         {
             target = FindNearestTarget(collider2DArray);

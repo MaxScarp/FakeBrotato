@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2133577135687555228}
   - component: {fileID: 2648362717874010512}
-  - component: {fileID: 1760126455540055861}
-  - component: {fileID: 6445144944031764684}
   m_Layer: 0
   m_Name: pfWeapon
   m_TagString: Untagged
@@ -29,10 +27,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6870771849628115568}
+  - {fileID: 3703366815923528322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2648362717874010512
@@ -48,63 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponType: {fileID: 0}
---- !u!114 &1760126455540055861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192487096866214189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc65b81318509ec44bde5e419cfaa0fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  rotationSpeed: 30
-  movementSpeed: 15
-  sightRange: 6
-  attackRange: 4.5
-  deltaMovement: 0.05
-  deltaRotationDegrees: 10
---- !u!58 &6445144944031764684
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192487096866214189}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
---- !u!1001 &8249348161742804320
+--- !u!1001 &2181836331564570002
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -161,8 +103,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83326ffe36fd074987821bea929a0ee, type: 3}
---- !u!4 &6870771849628115568 stripped
+--- !u!4 &3703366815923528322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3252286031724410640, guid: a83326ffe36fd074987821bea929a0ee, type: 3}
-  m_PrefabInstance: {fileID: 8249348161742804320}
+  m_PrefabInstance: {fileID: 2181836331564570002}
   m_PrefabAsset: {fileID: 0}

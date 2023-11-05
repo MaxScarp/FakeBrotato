@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f412d3bc6653d9046a017ccf0688838c, type: 3}
   m_Name: Coconut
   m_EditorClassIdentifier: 
-  stringName: Coconut
-  sprite: {fileID: 21300000, guid: f934329da00f9be4f9f86a2a8ecfaff7, type: 3}
+  StringName: Coconut
+  Sprite: {fileID: 21300000, guid: f934329da00f9be4f9f86a2a8ecfaff7, type: 3}
+  WeaponType: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  SightRange: 6
+  AttackRange: 4.5
+  RotationSpeed: 30
+  DeltaRotationDegrees: 10
   WeaponPrefab: {fileID: 5473447865797586746, guid: 9d07ee546e7facb4eac5d491e8cc7c8b, type: 3}
