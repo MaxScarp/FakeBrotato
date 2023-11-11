@@ -26,6 +26,14 @@ public class Enemy : MonoBehaviour
         HandleMovement();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Player>() || collision.GetComponent<Weapon>())
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void HandleMovement()
     {
         moveDirection = Vector3.zero;

@@ -42,11 +42,6 @@ public class Player : MonoBehaviour
         HandleMovement();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
-    }
-
     private void HandleMovement()
     {
         Vector3 direction = PlayerInput.MovementDirection;

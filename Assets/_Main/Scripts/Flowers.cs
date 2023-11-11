@@ -3,13 +3,13 @@ using UnityEngine;
 public class Flowers : MonoBehaviour
 {
     [SerializeField] private Transform[] pfFlowerArray;
-    [SerializeField] private PolygonCollider2D boundingCollider;
+    [SerializeField] private SpriteRenderer backgroundSpriteRenderer;
     [SerializeField] private int flowerAmount = 25;
 
     private void Awake()
     {
-        float boundX = boundingCollider.bounds.extents.x;
-        float boundY = boundingCollider.bounds.extents.y;
+        float boundX = backgroundSpriteRenderer.bounds.extents.x;
+        float boundY = backgroundSpriteRenderer.bounds.extents.y;
 
         for (int i = 0; i < flowerAmount; i++)
         {
