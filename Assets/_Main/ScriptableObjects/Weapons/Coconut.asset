@@ -18,7 +18,7 @@ MonoBehaviour:
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  SightRange: 6
+  SightRange: 10
   AttackRange: 4.5
   RotationSpeed: 30
   DeltaRotationDegrees: 10

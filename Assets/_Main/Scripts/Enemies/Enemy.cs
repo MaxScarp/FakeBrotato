@@ -28,7 +28,12 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() || collision.GetComponent<Weapon>())
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<Projectile>() || collision.collider.GetComponent<Weapon>())
         {
             Destroy(gameObject);
         }

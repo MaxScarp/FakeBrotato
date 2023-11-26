@@ -14,6 +14,7 @@ public abstract class Weapon : MonoBehaviour
         ROTATE_TO_ENEMY,
         ATTACKING_TO_ENEMY,
         ATTACKING_TO_HOME,
+        WAIT
     }
 
     [SerializeField] protected Transform visualPrefab;
@@ -21,12 +22,15 @@ public abstract class Weapon : MonoBehaviour
     protected WeaponTypeSO weaponType;
     protected Transform target;
     protected State state;
+    protected float waitTimer;
 
-    private void Awake()
+    protected void Awake()
     {
         weaponType = GetComponent<WeaponTypeHolder>().WeaponType;
         visualPrefab.GetComponent<SpriteRenderer>().sprite = weaponType.Sprite;
         state = State.SEARCHING_FOR_ENEMIES;
+
+        waitTimer = weaponType.WaitTimerMax;
     }
 
     protected abstract void ChangeState(State newState);
@@ -83,5 +87,10 @@ public abstract class Weapon : MonoBehaviour
         }
 
         return targetEnemyTransform;
+    }
+
+    protected void ResetTimer()
+    {
+        waitTimer = weaponType.WaitTimerMax;
     }
 }

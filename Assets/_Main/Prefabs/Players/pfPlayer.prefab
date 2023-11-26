@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6201410564179507836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition2
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8785361694723196981}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition3
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9102912379599397105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition1
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7758006976026531615}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition5
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2193917440930949175}
   - component: {fileID: 5970031356291457408}
   - component: {fileID: 6714497520212004073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pfPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251230876144940313}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition4
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -299,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2010415881243755440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition6
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -372,6 +372,18 @@ PrefabInstance:
     - target: {fileID: 6555601650733713712, guid: 80722ca0df5bd734e9faa37dd454aeba, type: 3}
       propertyPath: m_Name
       value: pfPlayerVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555601650733713712, guid: 80722ca0df5bd734e9faa37dd454aeba, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648515500620069445, guid: 80722ca0df5bd734e9faa37dd454aeba, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996911864507566346, guid: 80722ca0df5bd734e9faa37dd454aeba, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

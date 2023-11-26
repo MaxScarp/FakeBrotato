@@ -11,5 +11,6 @@ public class WeaponTypeSO : ScriptableObject
     public float AttackRange = 4.5f;
     public float RotationSpeed = 30f;
     public float DeltaRotationDegrees = 10f;
+    public float WaitTimerMax = 1f;
     public Transform WeaponPrefab;
 }
